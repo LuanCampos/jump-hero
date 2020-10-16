@@ -92,6 +92,10 @@ public class PlayerJumpScript : MonoBehaviour
 			if (target.tag == "Platform")
 			{
 				Debug.Log("Point!");
+				if (GameManager.instance != null)
+				{
+					GameManager.instance.CreateNewPlatformAndLerp(target.transform.position.x);
+				}
 			}
 		}
 	}
