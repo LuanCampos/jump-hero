@@ -97,6 +97,16 @@ public class PlayerJumpScript : MonoBehaviour
 					GameManager.instance.CreateNewPlatformAndLerp(target.transform.position.x);
 				}
 			}
+			
+			if (target.tag == "Dead")
+			{
+				Debug.Log("Dead.");
+				if (GameOverManager.instance != null)
+				{
+					GameOverManager.instance.GameOverShowPanel();
+				}
+				Destroy(gameObject);
+			}
 		}
 	}
 	
