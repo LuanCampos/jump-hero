@@ -12,6 +12,8 @@ public class GameOverManager : MonoBehaviour
 	private Button restartButton;
 	private Button backButton;
 	private Text finalScore;
+	private GameObject scoreText;
+	private GameObject slider;
 	
 	void Awake()
 	{
@@ -29,7 +31,10 @@ public class GameOverManager : MonoBehaviour
 	
 	public void GameOverShowPanel()
 	{
+		scoreText.SetActive(false);
+		slider.SetActive(false);
 		gameOverPanel.SetActive(true);
+		finalScore.text = "" + ScoreManager.instance.GetScore();
 		gameOverAnim.Play("FadeIn");
 	}
 	
@@ -42,6 +47,8 @@ public class GameOverManager : MonoBehaviour
 		restartButton.onClick.AddListener(() => Restart());
 		backButton.onClick.AddListener(() => BackToMenu());
 		finalScore = GameObject.Find("Final Score").GetComponent<Text>();
+		scoreText = GameObject.Find("Score Text");
+		slider = GameObject.Find("Slider");
 		gameOverPanel.SetActive(false);
 	}
 	
