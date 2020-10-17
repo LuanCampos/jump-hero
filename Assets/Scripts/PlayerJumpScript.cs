@@ -88,12 +88,22 @@ public class PlayerJumpScript : MonoBehaviour
 	
 	void Jump()
 	{
-		myBody.velocity = new Vector2 (forceX, forceY);
-		forceX = forceY = 0f;
-		didJump = true;
-		anim.SetBool("Jump", didJump);
-		powerBarValue = 0f;
-		powerBar.value = powerBarValue;
+		if (forceX > 2f)
+		{
+			myBody.velocity = new Vector2 (forceX, forceY);
+			forceX = forceY = 0f;
+			didJump = true;
+			anim.SetBool("Jump", didJump);
+			powerBarValue = 0f;
+			powerBar.value = powerBarValue;
+		}
+		
+		else
+		{
+			forceX = forceY = 0f;
+			powerBarValue = 0f;
+			powerBar.value = powerBarValue;
+		}
 	}
 	
 	void IsLiveCheck()
